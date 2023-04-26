@@ -11,10 +11,8 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 ));
 $response = curl_exec($ch);
 curl_close($ch);
-echo $response;
-
 $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+echo 'Response status code is : ' . $httpcode;
 
-echo $httpcode;
 
 
