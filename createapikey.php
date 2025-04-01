@@ -5,7 +5,7 @@ include 'createapiuser.php';
 $url = "https://sandbox.momodeveloper.mtn.com/v1_0/apiuser/$reference_id/apikey";
 $headers = array(
     'Content-Type: application/json',
-    'Ocp-Apim-Subscription-Key: '.$secodary_key
+    'Ocp-Apim-Subscription-Key: ' . $secodary_key
 );
 $curl = curl_init();
 curl_setopt_array($curl, array(
@@ -17,19 +17,23 @@ curl_setopt_array($curl, array(
 ));
 curl_setopt($curl, CURLOPT_USERPWD, $secodary_key . ':');
 $response = curl_exec($curl);
-if(curl_errno($curl)) {
+if (curl_errno($curl)) {
     $error_msg = curl_error($curl);
     echo "cURL Error: " . $error_msg;
 }
 curl_close($curl);
-//echo $response;
+// echo $response;
 // Parse the JSON response
 $data = json_decode($response);
+echo "==========================<br>";
+echo "Create API key<br>";
+echo "==========================<br>";
 // Check if the API key was generated successfully
-if($data->apiKey) {
-   $apikey = $data->apiKey;
+$data = json_decode($response);
+if ($data !== null) {
+    $apikey = $data->apiKey; // Accessing the apiKey value
+    echo "APY KEY: " . $apikey . "<br>";
 } else {
-    echo "Failed to generate API key";
+    echo "Invalid JSON data";
 }
-
-
+echo "==========================<br>";

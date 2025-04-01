@@ -19,11 +19,16 @@ if(curl_errno($curl)) {
     echo "cURL Error: " . $error_msg;
 }
 curl_close($curl);
+echo "==========================<br>";
+echo "ACCESS TOKEN<br>";
+echo "==========================<br>";
 $data = json_decode($response);
-if($data->access_token) {
+if(isset($data->access_token)){
    $access_token = $data->access_token;
+    echo "Access Token: " . $access_token . "<br>";
 }else{
-    echo "Failed to generate access token";
+    echo  "ERROR: " . $response . "<br>";
 }
+echo "==========================<br>";
 
 

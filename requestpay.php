@@ -1,7 +1,9 @@
 <?php
 //INCLUDE ACCESS TOKEN
 include "createaccesstoken.php";
-$phone = '256772123456';
+$phone = '254701234567'; // Replace with the phone number you want to send the request to
+$amount = '5.0'; // Replace with the amount you want to send
+$currency = 'EUR'; // Replace with the currency you want to use
 // Set the request URL
 $url = "https://sandbox.momodeveloper.mtn.com/collection/v1_0/requesttopay";
 // Set the headers
@@ -12,14 +14,12 @@ $headers = array(
     'Content-Type: application/json',
     'Ocp-Apim-Subscription-Key: '.$secodary_key
 );
-
 //GENRATE AN EXTERNAL ID 8 DIGITS
 $external_id = rand(10000000, 99999999);
-
 // Set the request body
 $body = array(
-    'amount' => '5.0',
-    'currency' => 'EUR',
+    'amount' => $amount,
+    'currency' => $currency,
     "externalId" => $external_id,
     'payer' => array(
         'partyIdType' => 'MSISDN',
