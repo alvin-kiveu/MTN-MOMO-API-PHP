@@ -6,6 +6,7 @@ echo "Create API User<br>";
 echo "==========================<br>";
 $reference_id = generate_uuid();
 echo "Reference ID: " . $reference_id . "<br>";
+echo "Callback URL: https://paymant.werusubbot.com/callback.php <br>";
 // Set the request URL and data
 $url = 'https://sandbox.momodeveloper.mtn.com/v1_0/apiuser';
 $data = array(
